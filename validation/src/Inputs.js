@@ -4,7 +4,7 @@ function Inputs(props) {
   return (
     <div>
       <input
-        className="inputs"
+        className={props.className}
         id={props.id}
         type={props.type}
         value={props.value}
