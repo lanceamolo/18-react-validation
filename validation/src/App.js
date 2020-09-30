@@ -1,12 +1,19 @@
 import React, { useState } from "react"
+import validator from "validator"
 import logo from "./logo.svg"
 import "./App.css"
 import Labels from "./Labels.js"
 import Inputs from "./Inputs.js"
 import "./main.css"
-import validator from "validator"
+
+// install {useState} and validator
+// create custom components for Labels and Inputs
+// import/export
+// use state to change values and CSS
+// have 'thank you' screen show when 6 inputs are complete
 
 function App() {
+  // track input values
   let nameInput
   let emailInput
   let usernameInput
@@ -14,6 +21,7 @@ function App() {
   let passwordConfrimInputed
   let websiteInput
 
+  // create state for input values
   const [nameText, setNameText] = useState("")
   const [emailText, setEmailText] = useState("")
   const [usernameText, setUsernameText] = useState("")
@@ -21,6 +29,7 @@ function App() {
   const [passwordConfirmText, setPasswordConfirmText] = useState("")
   const [websiteText, setWebsiteText] = useState("")
 
+  // create state for labels
   const [nameLabel, setNameLabel] = useState("Name - Cannot be blank")
   const [emailLabel, setEmailLabel] = useState("Email - Must be a valid email")
   const [usernameLabel, setUsernameLabel] = useState(
@@ -36,6 +45,7 @@ function App() {
     "Website - Must be a valid website"
   )
 
+  // create state to toggle CSS effects
   const [nameValid, setNameValid] = useState(true)
   const [emailValid, setEmailValid] = useState(true)
   const [usernameValid, setUsernameValid] = useState(true)
@@ -43,10 +53,11 @@ function App() {
   const [passwordConfirmValid, setPasswordConfirmValid] = useState(true)
   const [websiteValid, setWebsiteValid] = useState(true)
 
+  // create state to thank user when all 6 inputs are complete
   const [hideContainer2, incompleteForm] = useState(true)
-
   let allSixInputs = 0
 
+  // (if statements) if: for incomplete labels and inputs, else: for complete labels and inputs
   function handleSubmit(e) {
     e.preventDefault()
     if (validator.isEmpty(nameText)) {
