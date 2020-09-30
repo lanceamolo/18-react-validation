@@ -7,15 +7,6 @@ import "./main.css"
 import validator from "validator"
 
 function App() {
-  const labelTitles = [
-    "Name",
-    "Email",
-    "Username",
-    "Password",
-    "Confirm Password",
-    "Website",
-  ]
-
   let nameInput
   let emailInput
   let usernameInput
