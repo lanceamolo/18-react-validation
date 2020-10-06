@@ -30,32 +30,25 @@ function App() {
   const [websiteText, setWebsiteText] = useState("")
 
   // create state for labels
-  const [nameLabel, setNameLabel] = useState("Name - Cannot be blank")
-  const [emailLabel, setEmailLabel] = useState("Email - Must be a valid email")
-  const [usernameLabel, setUsernameLabel] = useState(
-    "Username - Must be a valid username"
-  )
-  const [passwordLabel, setPasswordLabel] = useState(
-    "Password - Must be a valid password"
-  )
+  const [nameLabel, setNameLabel] = useState("Name")
+  const [emailLabel, setEmailLabel] = useState("Email")
+  const [usernameLabel, setUsernameLabel] = useState("Username")
+  const [passwordLabel, setPasswordLabel] = useState("Password")
   const [passwordConfirmLabel, setPasswordConfirmLabel] = useState(
-    "Password Confirm - Cannot be blank"
+    "Password Confirm"
   )
-  const [websiteLabel, setWebsiteLabel] = useState(
-    "Website - Must be a valid website"
-  )
+  const [websiteLabel, setWebsiteLabel] = useState("Website")
 
   // create state to toggle CSS effects
-  const [nameValid, setNameValid] = useState(true)
-  const [emailValid, setEmailValid] = useState(true)
-  const [usernameValid, setUsernameValid] = useState(true)
-  const [passwordValid, setPasswordValid] = useState(true)
-  const [passwordConfirmValid, setPasswordConfirmValid] = useState(true)
-  const [websiteValid, setWebsiteValid] = useState(true)
+  const [nameValid, setNameValid] = useState(false)
+  const [emailValid, setEmailValid] = useState(false)
+  const [usernameValid, setUsernameValid] = useState(false)
+  const [passwordValid, setPasswordValid] = useState(false)
+  const [passwordConfirmValid, setPasswordConfirmValid] = useState(false)
+  const [websiteValid, setWebsiteValid] = useState(false)
 
   // create state to thank user when all 6 inputs are complete
   const [hideContainer2, incompleteForm] = useState(true)
-  let allSixInputs = 0
 
   // (if statements) if: for incomplete labels and inputs, else: for complete labels and inputs
   function handleSubmit(e) {
@@ -66,7 +59,6 @@ function App() {
     } else {
       setNameLabel("Name")
       setNameValid(false)
-      allSixInputs += 1
     }
     if (validator.isEmpty(emailText)) {
       setEmailLabel("Email - Must be a valid email")
@@ -74,7 +66,6 @@ function App() {
     } else {
       setEmailLabel("Email")
       setEmailValid(false)
-      allSixInputs += 1
     }
     if (validator.isEmpty(usernameText)) {
       setUsernameLabel("Username - Must be a valid username")
@@ -82,7 +73,6 @@ function App() {
     } else {
       setUsernameLabel("Username")
       setUsernameValid(false)
-      allSixInputs += 1
     }
     if (validator.isEmpty(passwordText)) {
       setPasswordLabel("Password - Must be a valid password")
@@ -90,15 +80,13 @@ function App() {
     } else {
       setPasswordLabel("Password")
       setPasswordValid(false)
-      allSixInputs += 1
     }
     if (validator.isEmpty(passwordConfirmText)) {
-      setPasswordConfirmLabel("Password Confirm - Must match the password")
+      setPasswordConfirmLabel("Password Confirm - Cannot be blank")
       setPasswordConfirmValid(true)
     } else {
       setPasswordConfirmLabel("Password Confirmed")
       setPasswordConfirmValid(false)
-      allSixInputs += 1
     }
     if (passwordConfirmText !== passwordText) {
       setPasswordConfirmValid(true)
@@ -110,10 +98,16 @@ function App() {
     } else {
       setWebsiteLabel("Website")
       setWebsiteValid(false)
-      allSixInputs += 1
     }
-    console.log(allSixInputs)
-    if (allSixInputs == 6) {
+
+    if (
+      (!!nameText,
+      !!emailText,
+      !!usernameText,
+      !!passwordText,
+      !!passwordConfirmText,
+      !!websiteText)
+    ) {
       incompleteForm(false)
     }
   }
